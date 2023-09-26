@@ -1,6 +1,7 @@
 package com.example.oganizeationtree.controller;
 
 import com.example.oganizeationtree.entity.Department;
+import com.example.oganizeationtree.service.DepartmentInterface;
 import com.example.oganizeationtree.service.DepartmentService;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +23,20 @@ public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentservice;
+    @Autowired
+    private DepartmentInterface departmentInterface;
 
 
     @GetMapping("/getAllDepartments")
     public ResponseEntity<List<Department>> findAll() {
-        List<Department> list = departmentservice.findAll();
+        List<Department> list = departmentInterface.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
     @GetMapping("/generate")
     public ResponseEntity<ByteArrayResource> generateExcel() {
-        List<Department> dataList = departmentservice.findAll(); // Replace with your data retrieval logic
+        List<Department> dataList = departmentInterface.findAll(); // Replace with your data retrieval logic
 
-        Workbook workbook = departmentservice.generateExcel(dataList);
+        Workbook workbook = departmentInterface.generateExcel(dataList);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
