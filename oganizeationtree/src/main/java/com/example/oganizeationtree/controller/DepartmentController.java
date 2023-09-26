@@ -29,13 +29,6 @@ public class DepartmentController {
         List<Department> list = departmentservice.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
-
-    @GetMapping("/getDepartmentName")
-    public ResponseEntity<Department> findById(@RequestParam String id) {
-        Department department = departmentservice.findByDepartmentId(id);
-        return new ResponseEntity<>(department, HttpStatus.OK);
-    }
-
     @GetMapping("/generate")
     public ResponseEntity<ByteArrayResource> generateExcel() {
         List<Department> dataList = departmentservice.findAll(); // Replace with your data retrieval logic
