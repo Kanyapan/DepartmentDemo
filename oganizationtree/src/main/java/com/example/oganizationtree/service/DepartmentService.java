@@ -1,24 +1,29 @@
-package com.example.oganizeationtree.service;
+package com.example.oganizationtree.service;
 
-import com.example.oganizeationtree.entity.Department;
-import com.example.oganizeationtree.repository.DepartmentRepository;
+import com.example.oganizationtree.entity.Department;
+import com.example.oganizationtree.repository.DepartmentRepository;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-
 
 import java.util.List;
 
 @Service
-public class DepartmentService {
+public class DepartmentService implements DepartmentInterface {
     @Autowired
     private DepartmentRepository repository;
 
 
     public List<Department> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Department findByDepartmentName(String id) {
+        return null;
     }
 
 

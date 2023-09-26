@@ -1,28 +1,29 @@
-package com.example.oganizeationtree.controller;
+package com.example.oganizationtree.controller;
 
-import com.example.oganizeationtree.entity.Department;
-import com.example.oganizeationtree.service.DepartmentInterface;
-import com.example.oganizeationtree.service.DepartmentService;
+import com.example.oganizationtree.entity.Department;
+import com.example.oganizationtree.service.DepartmentInterface;
+import com.example.oganizationtree.service.DepartmentService;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 @RestController
-
 public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentservice;
+
     @Autowired
     private DepartmentInterface departmentInterface;
 
@@ -32,6 +33,7 @@ public class DepartmentController {
         List<Department> list = departmentInterface.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
     @GetMapping("/generate")
     public ResponseEntity<ByteArrayResource> generateExcel() {
         List<Department> dataList = departmentInterface.findAll(); // Replace with your data retrieval logic

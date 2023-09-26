@@ -1,4 +1,4 @@
-package com.example.oganizeationtree.entity;
+package com.example.oganizationtree.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
